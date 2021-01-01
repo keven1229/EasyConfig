@@ -51,8 +51,6 @@ namespace EasyConfig
                     try
                     {
                         url = Path.GetDirectoryName(url);
-                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
-                        //MessageBox.Show(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
                     catch
@@ -89,8 +87,6 @@ namespace EasyConfig
                     try
                     {
                         url = Path.GetDirectoryName(url);
-                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
-                        //MessageBox.Show(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
                     catch
@@ -133,8 +129,6 @@ namespace EasyConfig
                     try
                     {
                         url = Path.GetDirectoryName(url);
-                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
-                        //MessageBox.Show(url);
                         url = Path.Combine(url, "config.ini");
                     }
                     catch
@@ -174,6 +168,92 @@ namespace EasyConfig
                 {
                     MessageBox.Show("修改失败：\n" + ex);
                 }
+            }
+            else
+            {
+                MessageBox.Show("没有获取有效的目录，请重新选择");
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton6.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\kingsoft\JX3\zhcn_hd");
+                url = key.GetValue("installPath").ToString();
+                if (url == null)
+                {
+                    label2.Text = "读取失败，无法找到指定客户端安装位置";
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = Path.GetDirectoryName(url);
+                        url = Path.Combine(url, "config", "config.default.ini");
+                    }
+                    catch
+                    {
+
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+
+                }
+            }
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton7.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\kingsoft\JX3\zhcn_exp");
+                url = key.GetValue("installPath").ToString();
+                if (url == null)
+                {
+                    label2.Text = "读取失败，无法找到指定客户端安装位置";
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = Path.GetDirectoryName(url);
+                        url = Path.Combine(url, "config", "config.default.ini");
+                    }
+                    catch
+                    {
+
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (valid)
+            {
+                System.Diagnostics.Process.Start(url);
             }
             else
             {
