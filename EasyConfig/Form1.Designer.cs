@@ -185,6 +185,7 @@ namespace EasyConfig
             this.button1.TabIndex = 2;
             this.button1.Text = "应用更改";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -282,7 +283,7 @@ namespace EasyConfig
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "EasyConfig-by Keven&KevenIDC";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -38,20 +38,12 @@ namespace EasyConfig
             };
             Updater.CheckUpdateSimple();
 
-            DateTime expire = DateTime.Parse("2021-12-14");
             if (!updater.Context.HasUpdate)
             {
-                if (expire < DateTime.Now)
-                {
-                    MessageBox.Show("版本已过期，即将关闭");
-                }
-                else
-                {
-                    Control.CheckForIllegalCrossThreadCalls = false;
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Form1());
-                }
+                Control.CheckForIllegalCrossThreadCalls = false;
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
             }
         }
     }
