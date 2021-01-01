@@ -41,8 +41,7 @@ namespace EasyConfig
             if (radioButton1.Checked)
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Kingsoft\JX3\zhcn_hd");
-                url = key.GetValue("installPath").ToString();
-                if (url == null)
+                if (key == null)
                 {
                     MessageBox.Show("读取失败，无法找到指定客户端安装位置");
                     valid = false;
@@ -51,6 +50,7 @@ namespace EasyConfig
                 {
                     try
                     {
+                        url = key.GetValue("installPath").ToString();
                         url = Path.GetDirectoryName(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
@@ -77,8 +77,7 @@ namespace EasyConfig
             if (radioButton2.Checked)
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Kingsoft\JX3\zhcn_exp");
-                url = key.GetValue("installPath").ToString();
-                if (url == null)
+                if (key == null)
                 {
                     label2.Text="读取失败，无法找到指定客户端安装位置";
                     valid = false;
@@ -87,6 +86,7 @@ namespace EasyConfig
                 {
                     try
                     {
+                        url = key.GetValue("installPath").ToString();
                         url = Path.GetDirectoryName(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
@@ -119,8 +119,7 @@ namespace EasyConfig
             if (radioButton4.Checked)
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\MovieEditorLauncher.exe");
-                url = key.GetValue("").ToString();
-                if (url == null)
+                if (key == null)
                 {
                     MessageBox.Show("读取失败，无法找到指定客户端安装位置");
                     valid = false;
@@ -129,6 +128,7 @@ namespace EasyConfig
                 {
                     try
                     {
+                        url = key.GetValue("").ToString();
                         url = Path.GetDirectoryName(url);
                         url = Path.Combine(url, "config.ini");
                     }
@@ -181,8 +181,7 @@ namespace EasyConfig
             if (radioButton6.Checked)
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\kingsoft\JX3\zhcn_hd");
-                url = key.GetValue("installPath").ToString();
-                if (url == null)
+                if (key == null)
                 {
                     label2.Text = "读取失败，无法找到指定客户端安装位置";
                     valid = false;
@@ -191,6 +190,7 @@ namespace EasyConfig
                 {
                     try
                     {
+                        url = key.GetValue("installPath").ToString();
                         url = Path.GetDirectoryName(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
@@ -218,8 +218,7 @@ namespace EasyConfig
             if (radioButton7.Checked)
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\kingsoft\JX3\zhcn_exp");
-                url = key.GetValue("installPath").ToString();
-                if (url == null)
+                if (key == null)
                 {
                     label2.Text = "读取失败，无法找到指定客户端安装位置";
                     valid = false;
@@ -228,6 +227,7 @@ namespace EasyConfig
                 {
                     try
                     {
+                        url = key.GetValue("installPath").ToString();
                         url = Path.GetDirectoryName(url);
                         url = Path.Combine(url, "config", "config.default.ini");
                     }
