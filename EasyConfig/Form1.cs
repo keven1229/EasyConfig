@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.IO;
 
 namespace EasyConfig
 {
     public partial class Form1 : Form
     {
         int processorCount;
+        string url;
+        bool valid = false;
 
         public Form1()
         {
@@ -31,5 +35,129 @@ namespace EasyConfig
         
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Kingsoft\JX3\zhcn_hd");
+                url = key.GetValue("installPath").ToString();
+                if (url == null)
+                {
+                    MessageBox.Show("读取失败，无法找到指定客户端安装位置");
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = Path.GetDirectoryName(url);
+                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
+                        //MessageBox.Show(url);
+                        url = Path.Combine(url, "config", "config.default.ini");
+                    }
+                    catch
+                    {
+
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+                }
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Kingsoft\JX3\zhcn_exp");
+                url = key.GetValue("installPath").ToString();
+                if (url == null)
+                {
+                    label2.Text="读取失败，无法找到指定客户端安装位置";
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = Path.GetDirectoryName(url);
+                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
+                        //MessageBox.Show(url);
+                        url = Path.Combine(url, "config", "config.default.ini");
+                    }
+                    catch
+                    {
+
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+
+                }
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\MovieEditorLauncher.exe");
+                url = key.GetValue("").ToString();
+                if (url == null)
+                {
+                    MessageBox.Show("读取失败，无法找到指定客户端安装位置");
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = Path.GetDirectoryName(url);
+                        //url = url.TrimEnd('M', 'o', 'v', 'i', 'e', 'E', 'd', 'i', 't', 'o', 'r', 'L', 'a', 'u', 'n', 'c', 'h', 'e', 'r', '.', 'e', 'x', 'e') + "config.ini";
+                        //MessageBox.Show(url);
+                        url = Path.Combine(url, "config.ini");
+                    }
+                    catch
+                    {
+
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+                }
+            }
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

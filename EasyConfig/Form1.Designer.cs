@@ -78,6 +78,7 @@ namespace EasyConfig
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "主服正式服(zhcn_hd)";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -89,6 +90,7 @@ namespace EasyConfig
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "主服测试服(zhcn_exp)";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -102,6 +104,7 @@ namespace EasyConfig
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "国际正式服(zhtw_hd)(暂不支持)";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -113,6 +116,7 @@ namespace EasyConfig
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "视频编辑器(MovieEditor)(实验性)";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -124,7 +128,7 @@ namespace EasyConfig
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 278);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(706, 171);
+            this.groupBox2.Size = new System.Drawing.Size(806, 119);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "系统信息";
@@ -132,6 +136,7 @@ namespace EasyConfig
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
+            this.radioButton5.Enabled = false;
             this.radioButton5.Location = new System.Drawing.Point(6, 170);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(317, 28);
@@ -139,6 +144,7 @@ namespace EasyConfig
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "自定义(会做的...咕咕咕)";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -148,7 +154,7 @@ namespace EasyConfig
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(459, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(614, 260);
+            this.groupBox3.Size = new System.Drawing.Size(825, 260);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "2.确认目录/应用修改";
@@ -193,7 +199,7 @@ namespace EasyConfig
             // 
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(979, 439);
+            this.label22.Location = new System.Drawing.Point(1190, 376);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(94, 24);
@@ -204,7 +210,7 @@ namespace EasyConfig
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(727, 367);
+            this.label3.Location = new System.Drawing.Point(938, 304);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(346, 72);
@@ -269,7 +275,7 @@ namespace EasyConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 472);
+            this.ClientSize = new System.Drawing.Size(1297, 409);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox3);
