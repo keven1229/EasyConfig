@@ -21,6 +21,7 @@ namespace EasyConfig
         public Form1()
         {
             InitializeComponent();
+            label22.Text = Application.ProductVersion;
         }
 
         private void Form1_Load(object sender, EventArgs e)
