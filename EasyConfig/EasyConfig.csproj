@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
-    </Reference>
     <Reference Include="SimpleUpdater, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c532149a76b9a64b, processorArchitecture=MSIL">
       <HintPath>..\packages\fishlee.net.simpleupdater.4.3.0.0\lib\net45\SimpleUpdater.dll</HintPath>
     </Reference>
@@ -60,9 +57,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
