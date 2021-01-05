@@ -261,5 +261,26 @@ namespace EasyConfig
                 MessageBox.Show("没有获取有效的目录，请重新选择");
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (valid)
+            {
+                INIConfigHelper config = new INIConfigHelper(url);
+                try
+                {
+                    config.IniWriteValue("KG3DENGINE", "NumCpuThread", "1");
+                    MessageBox.Show("已将" + url + "\n的" + "NumCpuThread恢复");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("修改失败：\n" + ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("没有获取有效的目录，请重新选择");
+            }
+        }
     }
 }
