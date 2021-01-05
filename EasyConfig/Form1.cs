@@ -43,7 +43,7 @@ namespace EasyConfig
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Kingsoft\JX3\zhcn_hd");
                 if (key == null)
                 {
-                    MessageBox.Show("读取失败，无法找到指定客户端安装位置");
+                    label2.Text="读取失败，无法找到指定客户端安装位置";
                     valid = false;
                 }
                 else
@@ -121,7 +121,7 @@ namespace EasyConfig
                 RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\MovieEditorLauncher.exe");
                 if (key == null)
                 {
-                    MessageBox.Show("读取失败，无法找到指定客户端安装位置");
+                    label2.Text="读取失败，无法找到指定客户端安装位置";
                     valid = false;
                 }
                 else
