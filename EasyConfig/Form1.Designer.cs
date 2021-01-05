@@ -324,6 +324,7 @@ namespace EasyConfig
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "EasyConfig-by Keven&KevenIDC";
             this.Load += new System.EventHandler(this.Form1_Load);
