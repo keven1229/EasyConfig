@@ -111,7 +111,39 @@ namespace EasyConfig
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            if (radioButton3.Checked)
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\kingsoft\JX3\zhtw_hd");
+                if (key == null)
+                {
+                    label2.Text = "读取失败，无法找到指定客户端安装位置";
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        url = key.GetValue("installPath").ToString();
+                        url = Path.GetDirectoryName(url);
+                        url = Path.Combine(url, "config", "config.default.ini");
+                    }
+                    catch
+                    {
 
+                    }
+                    if (File.Exists(url))
+                    {
+                        label2.Text = url;
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                        label2.Text = "读取失败，注册表不包含有效目录";
+                    }
+
+                }
+            }
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -152,7 +184,7 @@ namespace EasyConfig
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -45,13 +45,13 @@ namespace EasyConfig
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,6 +244,16 @@ namespace EasyConfig
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "2.确认目录/应用修改";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(38, 204);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 46);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "恢复默认";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(220, 152);
@@ -304,16 +314,6 @@ namespace EasyConfig
             this.label3.TabIndex = 36;
             this.label3.Text = "作者：双一念破 今天咕了吗\r\n念破-卿风歌酒知今朝 帮会收人\r\nkeven@kevenidc.com\r\n";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(38, 204);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 46);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "恢复默认";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -325,6 +325,7 @@ namespace EasyConfig
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "EasyConfig-by Keven&KevenIDC";
             this.Load += new System.EventHandler(this.Form1_Load);
