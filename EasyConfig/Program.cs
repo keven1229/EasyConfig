@@ -20,7 +20,7 @@ namespace EasyConfig
             Mutex mutex = new Mutex(true, System.Diagnostics.Process.GetCurrentProcess().ProcessName, out isAppRunning);
             if (!isAppRunning)
             {
-                MessageBox.Show("程序已在运行，请检查任务栏！");
+                MessageBox.Show("程序已在运行！");
                 Environment.Exit(1);
             }
             var updater = Updater.CreateUpdaterInstance();
@@ -30,7 +30,7 @@ namespace EasyConfig
             };
             updater.NoUpdatesFound += (s, e) =>
             {
-                MessageBox.Show("当前版本已为最新！", "自动更新");
+                //MessageBox.Show("当前版本已为最新！", "自动更新");
             };
             updater.MinmumVersionRequired += (s, e) =>
             {
@@ -43,7 +43,7 @@ namespace EasyConfig
                 Control.CheckForIllegalCrossThreadCalls = false;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new frmMain());
             }
         }
     }
