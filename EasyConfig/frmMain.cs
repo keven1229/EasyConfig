@@ -69,22 +69,27 @@ namespace EasyConfig
 
         private void ApplyThreadConfig(string configFile, int threadCount)
         {
+            INIConfigHelper config = new INIConfigHelper(configFile);
+            try
+            {
+                config.IniWriteValue("KG3DENGINE", "NumCpuThread", threadCount.ToString());
+                MessageBox.Show($"操作成功！{Environment.NewLine}已将 {configFile}{Environment.NewLine}的 NumCpuThread 设置为 {threadCount}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"修改失败：{Environment.NewLine}{ex}");
+            }
+        }
+
+        private void EnsureFileDoAction(string file, Action action)
+        {
             if (File.Exists(configFile))
             {
-                INIConfigHelper config = new INIConfigHelper(configFile);
-                try
-                {
-                    config.IniWriteValue("KG3DENGINE", "NumCpuThread", threadCount.ToString());
-                    MessageBox.Show($"操作成功！{Environment.NewLine}已将 {configFile}{Environment.NewLine}的 NumCpuThread 设置为 {threadCount}");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"修改失败：{Environment.NewLine}{ex}");
-                }
+                action?.Invoke();
             }
             else
             {
-                MessageBox.Show("没有获取有效的目录，请重新选择");
+                MessageBox.Show("文件不存在，请重新选择");
             }
         }
 
@@ -105,28 +110,26 @@ namespace EasyConfig
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            if (File.Exists(configFile))
-                Process.Start(configFile);
-            else
-                MessageBox.Show("没有获取有效的目录，请重新选择");
+            EnsureFileDoAction(configFile, () => Process.Start(configFile));
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            ApplyThreadConfig(configFile, processorCount);
+            EnsureFileDoAction(configFile, () => ApplyThreadConfig(configFile, processorCount));
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            ApplyThreadConfig(configFile, 1);
+            EnsureFileDoAction(configFile, () => ApplyThreadConfig(configFile, 1));
         }
 
         private void optClientVersion_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton optSender = (RadioButton)sender;
-            if(optSender.Checked)
+            if (optSender.Checked)
             {
-                if(optSender != optCustom)
+                configFile = String.Empty;
+                if (optSender != optCustom)
                 {
                     try
                     {
@@ -134,7 +137,7 @@ namespace EasyConfig
                         lblConfigLocation.ForeColor = Color.Green;
                         lblConfigLocation.Text = configFile;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         lblConfigLocation.ForeColor = Color.Red;
                         lblConfigLocation.Text = ex.Message;
@@ -142,7 +145,7 @@ namespace EasyConfig
                 }
                 else
                 {
-                    if(openFileDialog1.ShowDialog() == DialogResult.OK)
+                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         configFile = openFileDialog1.FileName;
                         lblConfigLocation.ForeColor = Color.Green;
